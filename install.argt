@@ -1,9 +1,11 @@
-mkdir /home/$USER/arget-tmp
-
 for f in `cat repository.argt`; do 
-    cd /home/$USER/arget-tmp
+    mkdir ./arget-tmp
+    cd arget-tmp
     `git clone $f`
-    git-name=$( ls )
+    gitname=$( ls )
     cd $gitname
-    makepkg -sric
+    makepkg -sric --noconfirm
+    cd ..
+    rm -rf $gitname
+    cd ..
 done 
