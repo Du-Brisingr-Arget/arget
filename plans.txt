@@ -1,3 +1,0 @@
-mkdir kuldr-risa-tmp
-<for>
-cd kuldr-risa
