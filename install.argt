@@ -1,7 +1,9 @@
 cd ..
 cp -r ./arget /home/$USER/arget-tmp
 cd /home/$USER/arget-tmp
-rm -rf 
-for f in `cat test.txt`; do 
+rm -rf README.md
+rm -rf install.argt
+
+for f in `cat repository.argt`; do 
     `git clone $f`; 
 done 
