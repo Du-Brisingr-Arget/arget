@@ -6,6 +6,6 @@ for f in `cat repository.argt`; do
     cd $gitname
     makepkg -sric --noconfirm
     cd ..
-    rm -rf $gitname
     cd ..
+    rm -rf arget-tmp
 done 
