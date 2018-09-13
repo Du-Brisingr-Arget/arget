@@ -1,5 +1,7 @@
 cd ..
 cp -r ./arget /home/$USER/arget-tmp
+cd /home/$USER/arget-tmp
+rm -rf 
 for f in `cat test.txt`; do 
     `git clone $f`; 
 done 
