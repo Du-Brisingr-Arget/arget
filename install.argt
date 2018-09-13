@@ -1,9 +1,9 @@
-cd ..
-cp -r ./arget /home/$USER/arget-tmp
-cd /home/$USER/arget-tmp
-rm -rf README.md
-rm -rf install.argt
+mkdir /home/$USER/arget-tmp
 
 for f in `cat repository.argt`; do 
-    `git clone $f`; 
+    cd /home/$USER/arget-tmp
+    `git clone $f`
+    git-name=$( ls )
+    cd $gitname
+    makepkg -sric
 done 
