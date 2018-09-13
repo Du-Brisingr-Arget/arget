@@ -4,8 +4,9 @@ for f in `cat repository.argt`; do
     `git clone $f`
     gitname=$( ls )
     cd $gitname
-    makepkg -sric --noconfirm
+    makepkg -sirc --noconfirm
     cd ..
     cd ..
-    rm -rf arget-tmp
 done 
+
+rm -rf arget-tmp
