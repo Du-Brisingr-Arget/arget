@@ -7,6 +7,5 @@ for f in `cat repository.argt`; do
     makepkg -sirc --noconfirm
     cd ..
     cd ..
+    rm -rf arget-tmp
 done 
-
-rm -rf arget-tmp
