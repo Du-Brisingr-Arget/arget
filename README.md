@@ -1,2 +1,2 @@
 # arget
-An aur helper that installs packages with pacman
+An aur helper that installs packages the standard way
