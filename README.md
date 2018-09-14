@@ -37,8 +37,8 @@ delete packages
 
     argt -d <package-name>
 list installed packages
-    argt list
 
+    argt list
 show help and version
 
     argt
