@@ -6,17 +6,17 @@ touch all-package-names.argt
 
 if [ $1 = '-i' ]; then
   echo $2 > tmp.argt
-   for f in `cat tmp.argt`; do 
-     pkgurl=https://aur.archlinux.org/$f.git
-     mkdir ./arget-tmp
-     cd arget-tmp
-     git clone $pkgurl
-     gitname=$( ls )
-     cd $gitname
-     makepkg -sirc --noconfirm
-     cd ..
-     cd ..
-     rm -rf arget-tmp
+  for f in `cat tmp.argt`; do 
+    pkgurl=https://aur.archlinux.org/$f.git
+    mkdir ./arget-tmp
+    cd arget-tmp
+    git clone $pkgurl
+    gitname=$( ls )
+    cd $gitname
+    makepkg -sirc --noconfirm
+    cd ..
+    cd ..
+    rm -rf arget-tmp
   done 
   pkgbf=$( cat all-package-names.argt )
   pkgnw=$( cat tmp.argt )
