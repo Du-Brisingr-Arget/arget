@@ -20,7 +20,7 @@ if [ $1 = '-i' ]; then
   done 
   pkgbf=$( cat all-package-names.argt )
   pkgnw=$( cat tmp.argt )
-  pkg=$pkgbf$pkgnw
+  pkg="$pkgbf $pkgnw"
   echo $pkg > all-package-names.argt
   rm tmp.argt
 fi
