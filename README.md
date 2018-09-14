@@ -45,3 +45,8 @@ If you have many packages to install, but don't want to type 'y' every time, typ
     argt -upd -m
     argt -syu -m
 deleting with '-m' won't work, as you should see exactly what is being uninstalled.
+
+# Uninstall Arget
+Run
+
+    sudo bash uninstall.argt
