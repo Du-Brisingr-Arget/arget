@@ -7,7 +7,7 @@ touch all-package-names.argt
 if [ $1 = '-i' ]; then
   echo $2 > tmp.argt
    for f in `cat tmp.argt`; do 
-     pkgurl=$( echo https://aur.archlinux.org/$f.git )
+     pkgurl=https://aur.archlinux.org/$f.git
      mkdir ./arget-tmp
      cd arget-tmp
      git clone $pkgurl
@@ -20,6 +20,6 @@ if [ $1 = '-i' ]; then
   done 
   pkgbf=$( cat all-package-names.argt )
   pkgnw=$( cat tmp.argt )
-  pkg=$( echo $pkgbf$pkgnw )
+  pkg=$pkgbf$pkgnw
   rm tmp.argt
 fi
