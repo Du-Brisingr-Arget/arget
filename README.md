@@ -1,5 +1,5 @@
 # Arget
-An aur helper that installs packages the standard way using makepkg -sirc
+An aur helper that installs packages the standard way using makepkg -sirc => as if you were building and installing the packages yourself!
 
 Arget can install/upgrade multiple packages at once.
 
