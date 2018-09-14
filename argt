@@ -21,6 +21,8 @@ if [ $1 = '-i' ]; then
   pkgbf=$( cat all-package-names.argt )
   pkgnw=$( cat tmp.argt )
   pkg="$pkgbf $pkgnw"
-  echo $pkg > all-package-names.argt
+  echo $pkg > tmp.all-package-names.argt
+  awk '!x[$0]++' tmp.all-package-names.argt > all-package-names.argt
   rm tmp.argt
+  rm tmp.all-package-names.argt
 fi
