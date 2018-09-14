@@ -13,4 +13,4 @@ Go in the git cloned arget directory
 
 run
 
-Sudo bash installer.txt
+sudo bash installer.txt
