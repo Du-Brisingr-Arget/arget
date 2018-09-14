@@ -6,7 +6,12 @@ cd ~/arget
 #make file that stores gitt clone urls
 
 if [ $1 = '-i' ]; then
-
+  echo $2 > package-names.argt
+  
+   for f in `package-names.argt`; do 
+   `echo https://aur.archlinux.org/$f.git > package-urls.argt`
+  done 
+  
   for f in `cat repository.argt`; do 
     mkdir ./arget-tmp
     cd arget-tmp
