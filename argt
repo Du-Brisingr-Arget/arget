@@ -1,2 +1,21 @@
 #!/bin/bash
 
+mkdir -p ~/arget
+cd ~/arget
+#make file that stores package names
+#make file that stores gitt clone urls
+
+if [ $1 = '-i' ]; then
+
+  for f in `cat repository.argt`; do 
+    mkdir ./arget-tmp
+    cd arget-tmp
+    `git clone $f`
+    gitname=$( ls )
+    cd $gitname
+    makepkg -sirc --noconfirm
+    cd ..
+    cd ..
+    rm -rf arget-tmp
+  done 
+fi
