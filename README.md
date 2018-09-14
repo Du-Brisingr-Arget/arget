@@ -28,7 +28,7 @@ update all packages installed with Arget ( pacman -Syu won't be able to update t
 
 update all packages installed on your system ( equivalent to running both pacman -Syu and argt -Syu together )
 
-    argt -Syu
+    argt -syu
 
 To work with multiple packages, quote the packages like this
 
@@ -39,3 +39,8 @@ delete packages
 show help and version
 
     argt
+If you have many packages to install, but don't want to type 'y' every time, type the commands with -m at the back.
+
+    argt -i 'pkg1 pkg2 pkg3 pkg4 pkg5' -m
+    argt -upd -m
+    argt -syu -m
