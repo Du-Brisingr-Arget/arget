@@ -21,4 +21,9 @@ run
 # How to Use
 you can install/update packages by running this
 
-    argt <package-name>
+    argt -i <package-name>
+update all packages installed with Arget ( pacman -Syu won't be able to update these packages unless you configure pacman.conf )
+
+    argt -syu
+
+update all packages installed on your system ( equivalent to running both pacman -Syu and argt -Syu together )
