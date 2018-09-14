@@ -1,5 +1,7 @@
 # Arget
-An aur helper that installs packages the standard way using makepkg -sirc => as if you were building and installing the packages yourself!
+An aur helper that installs packages the standard way using
+    makepkg -sirc
+=> as if you were building and installing the packages yourself!
 
 Arget can install/upgrade multiple packages at once.
 
@@ -13,9 +15,9 @@ Go in the git cloned arget directory
 
 run
 
-sudo bash installer.argt
+    sudo bash installer.argt
 
 # How to Use
 you can install/update packages by running this
 
-   argt <package-name>
+    argt <package-name>
