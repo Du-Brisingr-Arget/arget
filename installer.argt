@@ -1,1 +1,2 @@
-
+chmod +x argt
+cp argt /usr/bin/
