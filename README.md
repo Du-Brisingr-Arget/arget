@@ -18,4 +18,4 @@ sudo bash installer.argt
 # How to Use
 you can install/update packages by running this
 
-    argt <package-name>
+   argt <package-name>
