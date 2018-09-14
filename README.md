@@ -44,3 +44,4 @@ If you have many packages to install, but don't want to type 'y' every time, typ
     argt -i 'pkg1 pkg2 pkg3 pkg4 pkg5' -m
     argt -upd -m
     argt -syu -m
+deleting with '-m' won't work, as you should see exactly what is being uninstalled.
