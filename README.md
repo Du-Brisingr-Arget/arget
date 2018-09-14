@@ -30,6 +30,6 @@ update all packages installed on your system ( equivalent to running both pacman
 
     argt -Syu
 
-* To work with multiple packages, quote the packages like this
+To work with multiple packages, quote the packages like this
 
     argt -i 'pkg1 pkg2 pkg3'
