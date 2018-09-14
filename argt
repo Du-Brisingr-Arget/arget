@@ -2,24 +2,24 @@
 
 mkdir -p ~/arget
 cd ~/arget
-touch package-names.argt
-touch package-urls.argt
+touch all-package-names.argt
 
 if [ $1 = '-i' ]; then
-  echo $2 > package-names.argt
-   for f in `cat package-names.argt`; do 
-   `echo https://aur.archlinux.org/$f.git > package-urls.argt`
+  echo $2 > tmp.argt
+   for f in `cat tmp.argt`; do 
+     pkgurl=$( echo https://aur.archlinux.org/$f.git )
+     mkdir ./arget-tmp
+     cd arget-tmp
+     `git clone $pkgurl`
+     gitname=$( ls )
+     cd $gitname
+     makepkg -sirc --noconfirm
+     cd ..
+     cd ..
+     rm -rf arget-tmp
   done 
-  
-  for f in `cat repository.argt`; do 
-    mkdir ./arget-tmp
-    cd arget-tmp
-    `git clone $f`
-    gitname=$( ls )
-    cd $gitname
-    makepkg -sirc --noconfirm
-    cd ..
-    cd ..
-    rm -rf arget-tmp
-  done 
+  pkgbf=$( cat all-package-names.argt )
+  pkgnw=$( cat tmp.argt )
+  pkg=$( echo $pkgbf$pkgnw )
+  rm tmp.argt
 fi
