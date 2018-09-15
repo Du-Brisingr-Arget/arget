@@ -36,7 +36,7 @@ To work with multiple packages, quote the packages like this
 delete packages
 
     argt -d <package-name>
-
+    argt -d 'pkg1 pkg2 pkg3'
 list installed packages
 
     argt lst
