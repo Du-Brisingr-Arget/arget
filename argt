@@ -110,5 +110,8 @@ elif [ $1 = '-syu' ]; then
     pacman -Syyu
   fi
 
+elif [ $1 = 'lst' ]; then
+  cat all-package-names.argt
+
 fi
 cd ~
