@@ -36,7 +36,6 @@ To work with multiple packages, quote the packages like this
 delete packages
 
     argt -d <package-name>
-If you uninstall a package that was installed by arget with pacman, edit all-package-names.argt in home/arget. Delete the name of the package you uninstalled in the file. Or you could just uninstall with argt -d as shown above.
 
 list installed packages
 
