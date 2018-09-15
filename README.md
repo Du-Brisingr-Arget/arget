@@ -26,7 +26,7 @@ update all packages installed with Arget ( pacman -Syu won't be able to update t
 
     argt -upd
 
-update all packages installed on your system ( equivalent to running both pacman -Syu and argt -Syu together )
+update all packages installed on your system ( equivalent to running both pacman -Syyu and argt -upd together )
 
     argt -syu
 
