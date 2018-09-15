@@ -11,7 +11,7 @@ Also, Arget can remove all files and dependencies that aren't needed automatical
 # Versions
 Arget v 1.0.0 https://github.com/Garjzla/arget/tree/ab3f5541665313f8d5d30c6e8d22f49eec2b8764
 
-Arget v 2.0.0 https://github.com/Garjzla/arget/tree/1656b3271ad3ee0e50fb570a8f55d56481c6fba1
+Arget v 2.0.0 https://github.com/Garjzla/arget/tree/be3d7dd7e7e2ab6a7191ba464eb2c90f3d9a57a6
 # Install Arget
 Go in the git cloned arget directory
 
