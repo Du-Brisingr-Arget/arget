@@ -17,6 +17,8 @@ Go in the git cloned arget directory
 run
 
     sudo bash installer.argt
+run
+    argt -upd
 
 # How to Use
 you can install/update packages by running this
