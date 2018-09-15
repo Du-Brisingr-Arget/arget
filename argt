@@ -50,6 +50,7 @@ if [ "$1" = "-i" ]; then
   nodup=$( echo "$pkg" | xargs -n1 | sort -u | xargs )
   echo $nodup > all-package-names.argt
   rm tmp.argt
+  napkg
 
 elif [ "$1" = "-d" ]; then
   echo $2 > tmp.argt
