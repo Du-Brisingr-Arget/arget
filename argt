@@ -40,3 +40,14 @@ if [ $1 = '-i' ]; then
   echo $nodup > all-package-names.argt
   rm tmp.argt
 fi
+
+if [ $1 = '-d' ]; then
+  echo $2 > tmp.argt
+  then
+    for f in `cat tmp.argt`; do 
+      pacman -Rs $f
+      sed 's/$f//g' all-package-names.argt
+    done
+  fi
+  rm tmp.argt
+fi
