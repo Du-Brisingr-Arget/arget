@@ -1,7 +1,6 @@
 #!/bin/bash
 
-mkdir -p ~/arget
-cd ~/arget
+cd /arget
 touch all-package-names.argt
 
 if [ $1 = '-i' ]; then
