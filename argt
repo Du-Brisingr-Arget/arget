@@ -113,5 +113,7 @@ elif [ $1 = '-syu' ]; then
 elif [ $1 = 'lst' ]; then
   cat all-package-names.argt
 
+else
+  cat help.argt
 fi
 cd ~
