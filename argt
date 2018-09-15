@@ -43,7 +43,7 @@ if [ "$1" = "-i" ]; then
 elif [ "$1" = "-d" ]; then
   echo $2 > tmp.argt
   for f in `cat tmp.argt`; do 
-    pacman -Rs $f
+    sudo pacman -Rs $f
     sed 's/$f//g' all-package-names.argt
   done
   rm tmp.argt
@@ -93,7 +93,7 @@ elif [ "$1" = "-syu" ]; then
       cd ..
       rm -rf arget-tmp
     done
-    pacman -Syyu --noconfirm
+    sudo pacman -Syyu --noconfirm
   else
     for f in `cat all-package-names.argt`; do 
       pkgurl=https://aur.archlinux.org/$f.git
@@ -107,7 +107,7 @@ elif [ "$1" = "-syu" ]; then
       cd ..
       rm -rf arget-tmp   
     done 
-    pacman -Syyu
+    sudo pacman -Syyu
   fi
 
 elif [ "$1" = "lst" ]; then
