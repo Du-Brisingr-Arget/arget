@@ -54,4 +54,4 @@ deleting with '-m' won't work, as you should see exactly what is being uninstall
 Run
 
     sudo rm /bin.argt
-    sudo rm /arget
+    sudo rm -rf /arget
