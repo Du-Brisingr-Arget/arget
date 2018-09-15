@@ -78,5 +78,37 @@ elif [ $1 = '-upd' ]; then
     done 
   fi
 
+elif [ $1 = '-syu' ]; then
+  if [ $2 = '-m' ]
+  then
+    for f in `cat all-package-names.argt`; do 
+      pkgurl=https://aur.archlinux.org/$f.git
+      mkdir ./arget-tmp
+      cd arget-tmp
+      git clone $pkgurl
+      gitname=$( ls )
+      cd $gitname
+      makepkg -sirc --noconfirm
+      cd ..
+      cd ..
+      rm -rf arget-tmp
+    done
+    pacman -Syyu --noconfirm
+  else
+    for f in `cat all-package-names.argt`; do 
+      pkgurl=https://aur.archlinux.org/$f.git
+      mkdir ./arget-tmp
+      cd arget-tmp
+      git clone $pkgurl
+      gitname=$( ls )
+      cd $gitname
+      makepkg -sirc
+      cd ..
+      cd ..
+      rm -rf arget-tmp   
+    done 
+    pacman -Syyu
+  fi
+
 fi
 cd ~
