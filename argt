@@ -3,6 +3,18 @@
 cd /arget
 touch all-package-names.argt
 
+napakg () {
+cd /arget
+argtlst=$( argt lst)
+echo $argtlst > tmp-argtlst.txt
+qmpkg=$( pacman -Qm )
+echo $qmpkg > tmp-qmpkg.txt
+napkg=$( comm -3 <(sort tmp-argtlst.txt) <(sort tmp-qmpkg.txt) )
+echo $napkg > napkg.txt
+fnlpkg=$( comm -3 <(sort tmp-argtlst.txt) <(sort napkg.txt) )
+echo $fnlpkg > all-package-names.argt
+}
+
 if [ "$1" = "-i" ]; then
   echo $2 > tmp.argt
   if [ "$3" = "-m" ]
