@@ -53,5 +53,5 @@ deleting with '-m' won't work, as you should see exactly what is being uninstall
 # Uninstall Arget
 Run
 
-    sudo rm /bin/argt
+    sudo rm /usr/bin/argt
     sudo rm -rf /arget
