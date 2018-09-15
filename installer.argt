@@ -1,2 +1,5 @@
 chmod +x argt
 cp argt /usr/bin/
+cd /
+mkdir arget
+chmod -R a+rwX arget/
