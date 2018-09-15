@@ -6,7 +6,7 @@ touch all-package-names.argt
 napkg () {
 cd /arget
 argt lst > tmp-argtlst.txt
-pacman -Qm > tmp-qmpkg.txt
+pacman -Qm|cut -f 1 -d " " > tmp-qmpkg.txt
 comm -3 <(sort tmp-argtlst.txt) <(sort tmp-qmpkg.txt) > napkg.txt
 comm -3 <(sort tmp-argtlst.txt) <(sort napkg.txt) > all-package-names.argt
 rm tmp-argtlst.txt
