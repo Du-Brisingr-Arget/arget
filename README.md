@@ -18,6 +18,7 @@ run
 
     sudo bash installer.argt
 run
+
     argt -upd
 
 # How to Use
