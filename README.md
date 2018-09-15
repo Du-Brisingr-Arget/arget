@@ -55,3 +55,6 @@ Run
 
     sudo rm /usr/bin/argt
     sudo rm -rf /arget
+
+# Important
+Arget uses many temporary files, so don't interupt when arget is running (like with ctrl+c)
