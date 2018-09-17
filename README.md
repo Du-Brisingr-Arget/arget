@@ -59,8 +59,3 @@ Run
 
     sudo rm /usr/bin/argt
     sudo rm -rf /arget
-
-# Important
-Arget uses many temporary files, so don't interrupt when arget is running (like with ctrl+c)
-
-If arget was interrupted, go to /arget and delete every file and directory except all-package-names.argt
