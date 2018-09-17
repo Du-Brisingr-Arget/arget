@@ -4,15 +4,17 @@ cd /arget
 touch all-package-names.argt
 
 napkg () {
-cd /arget
-argt lst > tmp-argtlst.txt
-pacman -Qm|cut -f 1 -d " " > tmp-qmpkg.txt
-comm -3 <(sort tmp-argtlst.txt) <(sort tmp-qmpkg.txt) > napkg.txt
-comm -3 <(sort tmp-argtlst.txt) <(sort napkg.txt) > all-package-names.argt
-rm tmp-argtlst.txt
-rm tmp-qmpkg.txt
-rm napkg.txt
+  cd /arget
+  argt lst > tmp-argtlst.txt
+  pacman -Qm|cut -f 1 -d " " > tmp-qmpkg.txt
+  comm -3 <(sort tmp-argtlst.txt) <(sort tmp-qmpkg.txt) > napkg.txt
+  comm -3 <(sort tmp-argtlst.txt) <(sort napkg.txt) > all-package-names.argt
+  rm tmp-argtlst.txt
+  rm tmp-qmpkg.txt
+  rm napkg.txt
 }
+
+napkg
 
 if [ "$1" = "-i" ]; then
   echo $2 > tmp.argt
