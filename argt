@@ -20,7 +20,7 @@ if [ "$1" = "-i" ]; then
   echo $2 > tmp.argt
   if [ "$3" = "-m" ]
   then
-    for f in `cat tmp.argt`; do 
+    for f in `cat tmp.argt`; do
       pkgurl=https://aur.archlinux.org/$f.git
       mkdir ./arget-tmp
       cd arget-tmp
