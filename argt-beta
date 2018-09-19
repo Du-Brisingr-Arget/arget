@@ -1,0 +1,192 @@
+#!/bin/bash
+
+cd /arget
+touch all-package-names.argt
+
+napkg () {
+  cd /arget
+  argt lst > tmp-argtlst.txt
+  pacman -Qm|cut -f 1 -d " " > tmp-qmpkg.txt
+  comm -3 <(sort tmp-argtlst.txt) <(sort tmp-qmpkg.txt) > napkg.txt
+  comm -3 <(sort tmp-argtlst.txt) <(sort napkg.txt) > all-package-names.argt
+  rm tmp-argtlst.txt
+  rm tmp-qmpkg.txt
+  rm napkg.txt
+}
+
+napkg
+
+if [ "$1" = "-i" ]; then
+  echo $2 > tmp.argt
+  if [ "$3" = "-m" ]
+  then
+    for f in `cat tmp.argt`; do
+      pkgurl=https://aur.archlinux.org/$f.git
+      mkdir ./arget-tmp
+      cd arget-tmp
+      git clone $pkgurl
+      gitname=$( ls )
+      cd $gitname
+      makepkg -sirc --noconfirm
+      cd ..
+      cd ..
+      rm -rf arget-tmp
+    done
+  else
+    for f in `cat tmp.argt`; do 
+      pkgurl=https://aur.archlinux.org/$f.git
+      mkdir ./arget-tmp
+      cd arget-tmp
+      git clone $pkgurl
+      gitname=$( ls )
+      cd $gitname
+      makepkg -sirc
+      cd ..
+      cd ..
+      rm -rf arget-tmp   
+    done 
+  fi
+  pkgbf=$( cat all-package-names.argt )
+  pkgnw=$( cat tmp.argt )
+  pkg="$pkgbf $pkgnw"
+  nodup=$( echo "$pkg" | xargs -n1 | sort -u | xargs )
+  echo $nodup > all-package-names.argt
+  rm tmp.argt
+  napkg
+
+elif [ "$1" = "-d" ]; then
+  echo $2 > tmp.argt
+  for f in `cat tmp.argt`; do 
+    sudo pacman -Rs $f
+  done
+  rm tmp.argt
+  napkg
+
+elif [ "$1" = "-upd" ]; then
+  if [ "$2" = "-m" ]
+  then
+    for f in `cat all-package-names.argt`; do 
+      pkgurl=https://aur.archlinux.org/$f.git
+      mkdir ./arget-tmp
+      cd arget-tmp
+      git clone $pkgurl
+      gitname=$( ls )
+      cd $gitname
+      makepkg -sirc --noconfirm
+      cd ..
+      cd ..
+      rm -rf arget-tmp
+    done
+  else
+    for f in `cat all-package-names.argt`; do 
+      pkgurl=https://aur.archlinux.org/$f.git
+      mkdir ./arget-tmp
+      cd arget-tmp
+      git clone $pkgurl
+      gitname=$( ls )
+      cd $gitname
+      makepkg -sirc
+      cd ..
+      cd ..
+      rm -rf arget-tmp   
+    done 
+  fi
+  napkg
+
+elif [ "$1" = "-syu" ]; then
+  if [ "$2" = "-m" ]
+  then
+    for f in `cat all-package-names.argt`; do 
+      pkgurl=https://aur.archlinux.org/$f.git
+      mkdir ./arget-tmp
+      cd arget-tmp
+      git clone $pkgurl
+      gitname=$( ls )
+      cd $gitname
+      makepkg -sirc --noconfirm
+      cd ..
+      cd ..
+      rm -rf arget-tmp
+    done
+    sudo pacman -Syyu --noconfirm
+  else
+    for f in `cat all-package-names.argt`; do 
+      pkgurl=https://aur.archlinux.org/$f.git
+      mkdir ./arget-tmp
+      cd arget-tmp
+      git clone $pkgurl
+      gitname=$( ls )
+      cd $gitname
+      makepkg -sirc
+      cd ..
+      cd ..
+      rm -rf arget-tmp   
+    done 
+    sudo pacman -Syyu
+  fi
+  napkg
+
+elif [ "$1" = "lst" ]; then
+  cat all-package-names.argt
+
+else
+  echo "
+  <<Arget>>
+  
+created by Garjzla on Github, who is also known as Du Brisingr Arget
+-------------------------------------------------------------------------------------
+A multifunctional aur helper that installs packages the standard way using
+makepkg -sirc
+=> as if you were building and installing the packages yourself!
+
+Arget can install/upgrade multiple packages at once.
+
+Also, Arget can remove all files and dependencies that aren't needed automatically.
+
+<Versions>
+Arget v 1.0.0 https://github.com/Garjzla/arget/tree/ab3f5541665313f8d5d30c6e8d22f49eec2b8764
+Arget v 2.0.0 https://github.com/Garjzla/arget/tree/1656b3271ad3ee0e50fb570a8f55d56481c6fba1
+
+<Install Arget>
+Go in the git cloned arget directory
+run
+sudo bash installer.argt
+run
+argt -upd
+
+<How to Use>
+you can install/update packages by running this
+argt -i <package-name>
+
+update all packages installed with Arget ( pacman -Syu won't be able to update these packages unless you configure pacman.conf )
+argt -upd
+
+update all packages installed on your system ( equivalent to running both pacman -Syyu and argt -upd together )
+argt -syu
+
+To work with multiple packages, quote the packages like this
+argt -i 'pkg1 pkg2 pkg3'
+
+delete packages
+argt -d <package-name>
+argt -d 'pkg1 pkg2 pkg3'
+
+list installed packages by arget
+argt lst
+
+show help and version
+argt
+
+If you have many packages to install, but don't want to type 'y' every time, type the commands with -m at the back.
+argt -i 'pkg1 pkg2 pkg3 pkg4 pkg5' -m
+argt -upd -m
+argt -syu -m
+deleting with '-m' won't work, as you should see exactly what is being uninstalled.
+
+<Uninstall Arget>
+Run
+sudo rm /usr/bin/argt
+sudo rm -rf /arget
+  "
+fi
+cd ~
