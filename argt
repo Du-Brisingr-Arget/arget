@@ -14,8 +14,6 @@ napkg () {
   rm napkg.txt
 }
 
-napkg
-
 if [ "$1" = "-i" ]; then
   echo $2 > tmp.argt
   if [ "$3" = "-m" ]
