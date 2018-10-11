@@ -1,8 +1,7 @@
-list-dependencies () {
+#!/bin/bash
 
-}
+cd /arget
 
-classify-pkg () {
-
-}
-
+aur () {
+  curl -s --head http://myurl/ | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
+  if [ "$?"
