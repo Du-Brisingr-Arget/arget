@@ -4,4 +4,5 @@ cd /arget
 
 aur () {
   curl -s --head http://myurl/ | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
-  if [ "$?"
+  if [ "$?" = "1" ]; then
+    echo pkg >>
