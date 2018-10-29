@@ -10,6 +10,12 @@ aur () {
     aur=1
   else
     aur=0
+  fi
+}
     
 pkgbuilddep () {
-  
+ makepkg --printsrcinfo > srcinfo1.argt
+ awk '/depend/' srcinfo1.argt > srcinfo2.argt
+ awk '{ print $3 }' srcinfo2.argt > srcinfo3.argt
+ sed 's/://' scrinfo3.argt > srcinfo4.argt
+}
