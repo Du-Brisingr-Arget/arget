@@ -3,10 +3,10 @@
 cd /arget
 
 aur () {
-  curl -s --head https://aur.archlinux.org/packages/$pkg | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
+  curl -s --head https://aur.archlinux.org/packages/$d | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
   if [ "$?" = "0" ]; then
-    echo $pkg >> install.argt
-    echo $pkg >> installtmp2.argt
+    echo $d >> install.argt
+    echo $d >> installtmp2.argt
     aur=1
   else
     aur=0
@@ -25,9 +25,11 @@ dpndc_func () {
 
 write_to_install () {
   for f in 'cat installtmp.argt'; do
+    git clone https://aur.archlinux.org/packages/$f
     cd $f
     dpndc_func
     cd ..
+    rm 
     echo $dpndnc >> dpndc.argt
     for d in 'cat dpndc.argt'; do
       aur
