@@ -13,12 +13,23 @@ aur () {
   fi
 }
     
-pkgbuilddep () {
+dpndc_func () {
  makepkg --printsrcinfo > srcinfo1.argt
  awk '/depend/' srcinfo1.argt > srcinfo2.argt
  awk '{ print $3 }' srcinfo2.argt > srcinfo3.argt
- sed 's/://' scrinfo3.argt > srcinfo.argt
+ dpndc=$( sed 's/://' scrinfo3.argt )
  rm srcinfo1.argt
  rm srcinfo2.argt
  rm srcinfo3.argt
 }
+
+write_to_install () {
+  for f in 'cat installtmp.argt'; do
+    cd $f
+    dpndc_func
+    cd ..
+    echo $dpndnc >> dpndc.argt
+    for d in 'cat dpndc.argt'; do
+      aur
+    done
+  done
