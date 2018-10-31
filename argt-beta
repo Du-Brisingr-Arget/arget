@@ -46,3 +46,19 @@ looping_func () {
     write_to_install
   done
 ]
+
+install_func () {
+for e in `cat install.argt`; do 
+    pkgurl=https://aur.archlinux.org/$e.git
+    git clone $pkgurl
+    cd $e
+    makepkg -sirc
+    cd ..
+    rm -rf $e
+  done 
+}
+
+#declared all functions, now for the real part...
+if [ "$1" = "-i" ]; then
+  
+fi
