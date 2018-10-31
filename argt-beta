@@ -29,8 +29,8 @@ write_to_install () {
     cd $f
     dpndc_func
     cd ..
-    rm 
-    echo $dpndnc >> dpndc.argt
+    rm -rf $f
+    echo $dpndc >> dpndc.argt
     for d in 'cat dpndc.argt'; do
       aur
     done
