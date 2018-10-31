@@ -38,4 +38,11 @@ write_to_install () {
   newinstalltmp=$( cat installtmp2.argt )
   echo $newinstalltmp > installtmp.argt
   rm installtmp2.argt
+  end=$( cat installtmp.argt )
 }
+
+looping_func () {
+  until [ -z "$end" ]; do
+    write_to_install
+  done
+]
