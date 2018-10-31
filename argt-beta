@@ -48,7 +48,7 @@ looping_func () {
 ]
 
 install_func () {
-for e in `cat install.argt`; do 
+for e in `cat pending_for_install.argt`; do 
     pkgurl=https://aur.archlinux.org/$e.git
     git clone $pkgurl
     cd $e
@@ -56,6 +56,10 @@ for e in `cat install.argt`; do
     cd ..
     rm -rf $e
   done 
+}
+
+backwards () {
+  echo install.argt|rev > pending_for_install.argt
 }
 
 #declared all functions, now for the real part...
