@@ -35,3 +35,7 @@ write_to_install () {
       aur
     done
   done
+  newinstalltmp=$( cat installtmp2.argt )
+  echo $newinstalltmp > installtmp.argt
+  rm installtmp2.argt
+}
