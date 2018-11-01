@@ -2,6 +2,16 @@
 
 cd /arget
 
+first_pkg_func () {
+  for d in 'cat installtmp.argt'; do
+    aur
+  done
+  newinstalltmp=$( cat installtmp2.argt )
+  echo $newinstalltmp > installtmp.argt
+  rm installtmp2.argt
+  end=$( cat installtmp.argt )
+}
+
 aur () {
   curl -s --head https://aur.archlinux.org/packages/$d | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
   if [ "$?" = "0" ]; then
@@ -48,7 +58,7 @@ looping_func () {
 ]
 
 install_func () {
-for e in `cat pending_for_install.argt`; do 
+for e in `cat aur.argt`; do 
     pkgurl=https://aur.archlinux.org/$e.git
     git clone $pkgurl
     cd $e
@@ -59,12 +69,11 @@ for e in `cat pending_for_install.argt`; do
 }
 
 backwards () {
-  echo install.argt|rev > pending_for_install.argt
+  echo install.argt|rev > aur.argt
 }
 
 #declared all functions, now for the real part...
 if [ "$1" = "-i" ]; then
-  echo $2 > install.argt
   echo $2 > installtmp.argt
-  looping_func
+  first_pkg_func
 fi
