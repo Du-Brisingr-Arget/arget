@@ -64,5 +64,7 @@ backwards () {
 
 #declared all functions, now for the real part...
 if [ "$1" = "-i" ]; then
-  
+  echo $2 > install.argt
+  echo $2 > installtmp.argt
+  looping_func
 fi
