@@ -3,21 +3,24 @@
 cd /arget
 
 first_pkg_func () {
-  for d in 'cat installtmp.argt'; do
+  for d in 'cat installtmp.argt'
+  do
     aur
   done
   newinstalltmp=$( cat installtmp2.argt )
   echo $newinstalltmp > installtmp.argt
   rm installtmp2.argt
   end=$( cat installtmp.argt )
-  if [ "$aur" = "o" ]; then
+  if [ "$aur" = "o" ]
+  then
     echo $d >> pacman.argt
   fi
 }
 
 aur () {
   curl -s --head https://aur.archlinux.org/packages/$d | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
-  if [ "$?" = "0" ]; then
+  if [ "$?" = "0" ]
+  then
     echo $d >> install.argt
     echo $d >> installtmp2.argt
     aur=1
@@ -37,14 +40,16 @@ dpndc_func () {
 }
 
 write_to_install () {
-  for f in 'cat installtmp.argt'; do
+  for f in 'cat installtmp.argt'
+  do
     git clone https://aur.archlinux.org/packages/$f
     cd $f
     dpndc_func
     cd ..
     rm -rf $f
     echo $dpndc >> dpndc.argt
-    for d in 'cat dpndc.argt'; do
+    for d in 'cat dpndc.argt'
+    do
       aur
     done
   done
@@ -55,16 +60,19 @@ write_to_install () {
 }
 
 looping_func () {
-  until [ -z "$end" ]; do
+  until [ -z "$end" ]
+  do
     write_to_install
   done
 ]
 
 install_func () {
-for c in 'cat pacman.argt'; do
+for c in 'cat pacman.argt'
+do
   sudo pacman -S $d
 done
-for e in `cat aur.argt`; do 
+for e in `cat aur.argt`
+do 
     pkgurl=https://aur.archlinux.org/$e.git
     git clone $pkgurl
     cd $e
@@ -79,7 +87,8 @@ backwards () {
 }
 
 #declared all functions, now for the real part...
-if [ "$1" = "-i" ]; then
+if [ "$1" = "-i" ]
+then
   echo $2 > installtmp.argt
   first_pkg_func
   looping_func
