@@ -11,7 +11,7 @@ first_pkg_func () {
   echo $newinstalltmp > installtmp.argt
   rm installtmp2.argt
   end=$( cat installtmp.argt )
-  if [ "$aur" = "o" ]
+  if [[ "$aur" = "o" ]]
   then
     echo $d >> pacman.argt
   fi
@@ -19,7 +19,7 @@ first_pkg_func () {
 
 aur () {
   curl -s --head https://aur.archlinux.org/packages/$d | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
-  if [ "$?" = "0" ]
+  if [[ "$?" = "0" ]]
   then
     echo $d >> install.argt
     echo $d >> installtmp2.argt
@@ -60,7 +60,7 @@ write_to_install () {
 }
 
 looping_func () {
-  until [ -z "$end" ]
+  until [[ -z "$end" ]]
   do
     write_to_install
   done
@@ -87,7 +87,7 @@ backwards () {
 }
 
 #declared all functions, now for the real part...
-if [ "$1" = "-i" ]
+if [[ "$1" = "-i" ]]
 then
   echo $2 > installtmp.argt
   first_pkg_func
