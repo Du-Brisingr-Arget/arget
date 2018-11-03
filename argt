@@ -87,3 +87,4 @@ if [ "$1" = "-i" ]; then
   rm pacman.argt
   rm aur.argt
 fi
+cd ~
