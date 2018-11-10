@@ -17,3 +17,54 @@ then
       aur=0
     fi
   done
+  until [ -z "$end" ]
+  do
+    for f in 'cat installtmp.argt'
+    do
+      git clone https://aur.archlinux.org/packages/$f
+      cd $f
+      makepkg --printsrcinfo > srcinfo1.argt
+      awk '/depend/' srcinfo1.argt > srcinfo2.argt
+      awk '{ print $3 }' srcinfo2.argt > srcinfo3.argt
+      dpndc=$( sed 's/://' scrinfo3.argt )
+      rm srcinfo1.argt
+      rm srcinfo2.argt
+      rm srcinfo3.argt
+      cd ..
+      rm -rf $f
+      echo $dpndc > dpndc.argt
+      for d in 'cat dpndc.argt'
+      do
+        curl -s --head https://aur.archlinux.org/packages/$d | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
+        if [ "$?" = "0" ]
+        then
+          echo $d >> install.argt
+          echo $d >> installtmp2.argt
+          aur=1
+        else
+          aur=0
+        fi
+      done
+    done
+    newinstalltmp=$( cat installtmp2.argt )
+    echo $newinstalltmp > installtmp.argt
+    rm installtmp2.argt
+    end=$( cat installtmp.argt )
+  done
+  for c in 'cat pacman.argt'
+  do
+    sudo pacman -S $d
+  done
+  for e in `cat aur.argt`
+  do 
+    pkgurl=https://aur.archlinux.org/$e.git
+    git clone $pkgurl
+    cd $e
+    makepkg -sirc
+    cd ..
+    rm -rf $e
+  done
+  rm pacman.argt
+  rm aur.argt
+fi
+cd ~
