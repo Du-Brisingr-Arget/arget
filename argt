@@ -5,7 +5,7 @@ cd /arget
 if [ "$1" = "-i" ]
 then
   echo $2 > installtmp.argt
-  for d in 'cat installtmp.argt'
+  for d in $( cat installtmp.argt )
   do
     curl -s --head https://aur.archlinux.org/packages/$d | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
     if [[ "$?" = "0" ]]
@@ -28,7 +28,7 @@ then
   fi
   until [ -z "$end" ]
   do
-    for f in 'cat installtmp.argt'
+    for f in $( cat installtmp.argt )
     do
       git clone https://aur.archlinux.org/packages/$f
       cd $f
@@ -42,7 +42,7 @@ then
       cd ..
       rm -rf $f
       echo $dpndc > dpndc.argt
-      for d in 'cat dpndc.argt'
+      for d in $( cat dpndc.argt )
       do
         curl -s --head https://aur.archlinux.org/packages/$d | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
         if [ "$?" = "0" ]
@@ -64,11 +64,11 @@ then
   touch pacman.argt
   touch install.argt
   cat install.argt|rev > aur.argt
-  for e in 'cat pacman.argt'
+  for e in $( cat pacman.argt )
   do
     sudo pacman -S $e
   done
-  for e in `cat aur.argt`
+  for e in $( cat aur.argt )
   do 
     pkgurl=https://aur.archlinux.org/$e.git
     git clone $pkgurl
