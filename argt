@@ -17,6 +17,14 @@ then
       aur=0
     fi
   done
+  newinstalltmp=$( cat installtmp2.argt )
+  echo $newinstalltmp > installtmp.argt
+  rm installtmp2.argt
+  end=$( cat installtmp.argt )
+  if [[ "$aur" = "0" ]]
+  then
+    echo $d >> pacman.argt
+  fi
   until [ -z "$end" ]
   do
     for f in 'cat installtmp.argt'
@@ -51,6 +59,7 @@ then
     rm installtmp2.argt
     end=$( cat installtmp.argt )
   done
+  echo install.argt|rev > aur.argt
   for c in 'cat pacman.argt'
   do
     sudo pacman -S $c
