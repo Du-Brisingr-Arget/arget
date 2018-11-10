@@ -62,6 +62,7 @@ then
     end=$( cat installtmp.argt )
   done
   cat install.argt|rev > aur.argt
+  touch pacman.argt
   for c in 'cat pacman.argt'
   do
     sudo pacman -S $c
