@@ -53,7 +53,7 @@ then
   done
   for c in 'cat pacman.argt'
   do
-    sudo pacman -S $d
+    sudo pacman -S $c
   done
   for e in `cat aur.argt`
   do 
