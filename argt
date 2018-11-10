@@ -15,6 +15,7 @@ then
       aur=1
     else
       aur=0
+      touch installtmp2.argt
     fi
   done
   newinstalltmp=$( cat installtmp2.argt )
@@ -51,6 +52,7 @@ then
           aur=1
         else
           aur=0
+          touch installtmp2.argt
         fi
       done
     done
