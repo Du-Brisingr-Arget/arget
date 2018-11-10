@@ -64,9 +64,9 @@ then
   touch pacman.argt
   touch install.argt
   cat install.argt|rev > aur.argt
-  for c in 'cat pacman.argt'
+  for e in 'cat pacman.argt'
   do
-    sudo pacman -S $c
+    sudo pacman -S $e
   done
   for e in `cat aur.argt`
   do 
